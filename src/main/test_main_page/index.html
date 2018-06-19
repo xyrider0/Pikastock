@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <link lang="en">
-<!-- Angular Libs-->
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
 <!--Jquery Libs-->
 <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Angular Libs-->
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.min.js"></script>
+
 
 <!-- Bootstrap -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
@@ -14,9 +17,10 @@
 
 <!-- Main Scripts-->
 <script src="index.js"></script>
+<script src="../app/shared/helloWorld/helloController.js"></script>
 
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8"/>
     <title>PikaStock</title>
     <link rel="stylesheet" type="text/css" href="index.css">
 </head>
@@ -27,6 +31,12 @@
 <button id ="sample" title = "click here">Plain styled button</button>
 <p>Wanna see a cool button look down!</p>
 <button type="button" id = "bootSample" class="btn btn-info">bOOty Button</button>
+
+
+<div ng-app="helloAng" ng-controller="HelloController">
+    <h2>{{message}}</h2>
+</div>
+
 </body>
 <script>
 
