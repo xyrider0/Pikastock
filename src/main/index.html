@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+
+<head>
+
+    <link lang="en">
+    <!-- Angular Libs-->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.17/angular-ui-router.min.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>-->
+
+    <!--Jquery Libs-->
+    <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+    <!--Ghost-->
+    <script src="https://pikastock.com/public/ghost-sdk.min.js?v=cc2a50f01b"></script>
+
+    <!-- Main Scripts-->
+    <script src="app/app.js"></script>
+
+    <!--<script src="app/app.routes.js"></script>--> <!-- Haven't figured out how to split -->
+    <script src="assets/js/index.js"></script>
+    <meta charset="UTF-8">
+    <title>PikaStock</title>
+    <link rel="stylesheet" type="text/css" href="assets/css/index.css">
+</head>
+
+<body data-ng-app="routerApp">
+
+    <!--HEADER-->
+    <nav class="navbar navbar-light">
+        <div class="container">
+            <ul class="nav navbar-nav pull-xs-right">
+                <li class="nav-item">
+                    <a class="nav-link" data-ui-sref = "home" data-ui-sref-active="active"> Home </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-ui-sref = "recent" data-ui-sref-active="active"> Recent </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-ui-sref = "learn" data-ui-sref-active="active"> Learn </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-ui-sref = "about" data-ui-sref-active="active"> About </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+
+    <div container>
+        <div data-ui-view></div>
+    </div>
+
+    <!--//JQUERY + GHOST API TEST-->
+    <div id="posts"></div>
+
+</body>
