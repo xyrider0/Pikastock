@@ -1,29 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="a2f526f2-b430-4587-a879-61e4058ea223" name="Default" comment="Home Page + Nav Bar Setup">
-      <change afterPath="$PROJECT_DIR$/Gulpfile.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/app/components/core/app-view.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/app/components/core/header.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/app/components/home/homeController.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/assets/js/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/test.html" afterDir="false" />
+    <list default="true" id="a2f526f2-b430-4587-a879-61e4058ea223" name="Default" comment="Post Title Links correctly to Post Asyncrhonously">
+      <change afterPath="$PROJECT_DIR$/dist/js/bundle.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/app/components/posts/specificPost.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/app/layout/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pikastock.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EricVision/Eric/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/EricVision/Header/header.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/README.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/README.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/app.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/blog/blogController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.module.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/blog/blogService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.routes.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/blog/blogView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/home/homeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/config/app.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/home/homeService.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/components/home/homeService.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/components/home/homeView.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/components/home/homeView.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test_main_page/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/assets/css/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test_main_page/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/test_main_page/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gulpfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/Gulpfile.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/app.module.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/app.routes.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/app.routes.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/components/core/app-view.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/layout/app-view.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/components/core/header.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/layout/header.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/components/home/homeController.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/components/home/homeController.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/index.html" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -36,25 +28,38 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5">
+    <splitter split-orientation="horizontal" split-proportion="0.48758328">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/index.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="102">
-                  <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
+                <state relative-caret-position="378">
+                  <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="test.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/test.html">
-              <provider selected="true" editor-type-id="text-editor" />
+          <file leaf-file-name="main.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/build/main.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="119">
+                  <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app.routes.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/app/app.routes.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="9" selection-start-column="9" selection-end-column="9" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file leaf-file-name="header.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/app/components/core/header.html">
+            <entry file="file://$PROJECT_DIR$/src/main/app/layout/header.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="34">
                   <caret line="2" selection-start-line="2" selection-end-line="9" selection-end-column="72" />
@@ -62,20 +67,20 @@
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="Gulpfile.js" pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Gulpfile.js">
+          <file leaf-file-name="app.module.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/app/app.module.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+                <state relative-caret-position="51">
+                  <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="recentPosts.html" pinned="false" current-in-tab="false">
+          <file leaf-file-name="recentPosts.html" pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
+                <state relative-caret-position="51">
+                  <caret line="3" column="73" lean-forward="true" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
                 </state>
               </provider>
             </entry>
@@ -84,25 +89,38 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/assets/js/index.js">
-              <provider selected="true" editor-type-id="text-editor" />
-            </entry>
-          </file>
-          <file leaf-file-name="app.js" pinned="false" current-in-tab="true">
+          <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/app/app.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="77">
-                  <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+                <state relative-caret-position="238">
+                  <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file leaf-file-name="app-view.html" pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/app/components/core/app-view.html">
+          <file leaf-file-name="specificPost.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/app/components/posts/specificPost.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="85">
+                  <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="app-view.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/src/main/app/layout/app-view.html">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="68">
                   <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/app/layout/index.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="34">
+                  <caret line="2" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
@@ -121,6 +139,8 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>createElem</find>
+      <find>browserify</find>
+      <find>app</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -138,18 +158,24 @@
         <option value="$PROJECT_DIR$/src/README.txt" />
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/Gruntfile.js" />
-        <option value="$PROJECT_DIR$/Gulpfile.js" />
         <option value="$PROJECT_DIR$/src/main/app/components/home/homeController.js" />
         <option value="$PROJECT_DIR$/src/main/app/components/core/header/header.html" />
         <option value="$PROJECT_DIR$/src/main/app/header.html" />
-        <option value="$PROJECT_DIR$/src/main/app/app.module.js" />
         <option value="$PROJECT_DIR$/src/main/app/config/app.config.js" />
-        <option value="$PROJECT_DIR$/src/main/app/app.js" />
         <option value="$PROJECT_DIR$/src/main/assets/js/index.js" />
         <option value="$PROJECT_DIR$/src/main/test.html" />
         <option value="$PROJECT_DIR$/src/main/app/components/core/app-view.html" />
-        <option value="$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html" />
+        <option value="$PROJECT_DIR$/Gulpfile.js" />
+        <option value="$PROJECT_DIR$/src/main/app/app.module.js" />
+        <option value="$PROJECT_DIR$/build/main.js" />
+        <option value="$PROJECT_DIR$/src/main/app/app.routes.js" />
+        <option value="$PROJECT_DIR$/src/main/app/components/posts/singlePost.html" />
+        <option value="$PROJECT_DIR$/src/main/app/layout/index.js" />
         <option value="$PROJECT_DIR$/src/main/index.html" />
+        <option value="$PROJECT_DIR$/src/main/app/app.js" />
+        <option value="$PROJECT_DIR$/src/main/app/components/posts/specificPost.html" />
+        <option value="$PROJECT_DIR$/src/main/app/layout/app-view.html" />
+        <option value="$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html" />
       </list>
     </option>
   </component>
@@ -171,10 +197,11 @@
       <select />
     </treeState>
   </component>
-  <component name="ProjectFrameBounds">
-    <option name="x" value="715" />
-    <option name="width" value="1212" />
-    <option name="height" value="1087" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="2295" />
+    <option name="y" value="4" />
+    <option name="width" value="974" />
+    <option name="height" value="1080" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -197,58 +224,28 @@
             <path>
               <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
               <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
+              <item name="build" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
               <item name="dist" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
               <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
+              <item name="dist" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
               <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="home" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-              <item name="posts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
-              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="config" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -256,7 +253,29 @@
               <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sospikastock" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="layout" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="sospikastock" type="b2602c69:ProjectViewProjectNode" />
@@ -264,7 +283,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="assets" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -283,11 +301,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app\layout" />
       <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app\config" />
       <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app\components\core" />
       <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app\components" />
       <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app\shared" />
-      <recent name="C:\Users\Eric Tu\Projects\sospikastock\src\main\app" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -356,14 +374,23 @@
       <option name="presentableId" value="Default" />
       <updated>1529439028232</updated>
     </task>
+    <task id="LOCAL-00001" summary="Home Page + Nav Bar Setup">
+      <created>1533925619407</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1533925619407</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="715" y="0" width="1212" height="1087" extended-state="0" />
+    <frame x="1912" y="-5" width="1936" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32917964" />
+      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32619774" />
       <window_info anchor="right" id="Palette&#9;" order="3" />
       <window_info id="Image Layers" order="2" />
       <window_info anchor="right" id="Capture Analysis" order="3" />
@@ -374,8 +401,8 @@
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32606438" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="2" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22491638" />
-      <window_info anchor="bottom" id="Inspection Results" visible="true" weight="0.33230454" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14010416" />
+      <window_info anchor="bottom" id="Inspection Results" weight="0.33127573" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32925585" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -390,7 +417,6 @@
       <window_info anchor="right" id="Properties" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info active="true" anchor="bottom" id="Messages" order="7" visible="true" weight="0.32925585" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -457,19 +483,10 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Home Page + Nav Bar Setup" />
-    <option name="LAST_COMMIT_MESSAGE" value="Home Page + Nav Bar Setup" />
+    <MESSAGE value="Post Title Links correctly to Post Asyncrhonously" />
+    <option name="LAST_COMMIT_MESSAGE" value="Post Title Links correctly to Post Asyncrhonously" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/../pikastock/pikastock-react-project/src/components/footerComponents/footer.js" />
-    <entry file="file://$PROJECT_DIR$/../pikastock/pikastock-react-project/src/components/headerComponents/header.js" />
-    <entry file="file://$PROJECT_DIR$/src/EricVision/Eric/index.html" />
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="10" selection-start-line="11" selection-start-column="10" selection-end-line="11" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/../pikastock/pikastock-react-project/src/components/footerComponents/footer.js" />
     <entry file="file://$PROJECT_DIR$/../pikastock/pikastock-react-project/src/components/headerComponents/header.js" />
     <entry file="file://$PROJECT_DIR$/src/EricVision/Eric/index.html" />
@@ -519,9 +536,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/index.html" />
     <entry file="file://$PROJECT_DIR$/src/main/index.js" />
     <entry file="file://$PROJECT_DIR$/src/EricVision/Eric/index.html" />
-    <entry file="file://$PROJECT_DIR$/src/main/app/components/home/homeView.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/app/components/blog/blogView.js" />
     <entry file="file://$PROJECT_DIR$/src/main/app/components/blog/blogService.js" />
     <entry file="file://$PROJECT_DIR$/src/main/app/components/blog/blogController.js" />
@@ -551,53 +565,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/app.routes.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/config/app.config.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/app.module.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="12" lean-forward="true" selection-start-column="12" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/components/core/header.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="9" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/assets/js/index.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/components/core/app-view.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/test.html">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="77">
-          <caret line="5" column="8" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="60" selection-start-line="6" selection-start-column="60" selection-end-line="6" selection-end-column="60" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="238">
@@ -605,17 +572,95 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
+    <entry file="file://$PROJECT_DIR$/dist/js/bundle.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/assets/js/index.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/components/home/homeView.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/config/app.config.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/test.html">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/Gulpfile.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="17" column="36" selection-start-line="17" selection-start-column="36" selection-end-line="17" selection-end-column="36" />
+        <state relative-caret-position="289">
+          <caret line="39" column="3" lean-forward="true" selection-start-line="39" selection-start-column="3" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/app.module.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" lean-forward="true" selection-start-line="3" selection-end-line="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/app.routes.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="9" selection-start-column="9" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="4" lean-forward="true" selection-start-line="7" selection-start-column="4" selection-end-line="7" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/layout/header.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="9" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/layout/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/components/posts/specificPost.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/layout/app-view.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="56" column="9" selection-start-line="56" selection-start-column="9" selection-end-line="56" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/app/components/posts/recentPosts.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="73" lean-forward="true" selection-start-line="3" selection-start-column="73" selection-end-line="3" selection-end-column="73" />
         </state>
       </provider>
     </entry>
