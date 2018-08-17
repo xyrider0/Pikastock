@@ -1,6 +1,9 @@
 <div class="container">
     <div data-ng-repeat="post in posts">
-        <a class="nav-link" data-ui-sref="specificPost({title:post.title})" data-ui-sref-active="active"><h1>{{post.title}}</h1></a>
-            <!--<div data-ng-bind-html="post.html | to_trusted"></div>-->
+        <div class="jumbotron">
+
+            <a class="card-header" data-ui-sref="specificPost({slug:post.slug})" data-ui-sref-active="active"><h1>{{post.title}}</h1></a>
+
+        </div>
     </div>
 </div>

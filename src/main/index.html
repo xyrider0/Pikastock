@@ -33,30 +33,10 @@
 </head>
 
 <body data-ng-app="routerApp">
-    <!--HEADER-->
-    <nav class="navbar navbar-light">
-        <div class="container">
-            <ul class="nav navbar-nav pull-xs-right">
-                <li class="nav-item">
-                    <a class="nav-link" data-ui-sref = "home" data-ui-sref-active="active"> Home </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-ui-sref = "recent" data-ui-sref-active="active"> Recent </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-ui-sref = "learn" data-ui-sref-active="active"> Learn </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" data-ui-sref = "about" data-ui-sref-active="active"> About </a>
-                </li>
-            </ul>
-        </div>
-    </nav>
 
-
-    <div container>
+    <div id="header" ng-include="'app/layout/header.html'"></div>
         <div data-ui-view></div>
-    </div>
+    </div data-ui-view = "footer"></div>
 
     <!--//JQUERY + GHOST API TEST-->
     <div id="posts"></div>
