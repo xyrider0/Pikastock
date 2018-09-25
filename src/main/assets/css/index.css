@@ -1,4 +1,24 @@
-#sample
-{
-background-color: orange;
+#circle-menu{
+    width:50%;
+    height:width;
+}
+
+#main-body{
+    background:#fff;
+    /*background:#d3d3d3;*/
+}
+
+.market-sector-overview{
+    width: 49.5%;
+    word-break: break-word;
+    word-wrap: break-word;
+    vertical-align: top;
+}
+
+.market-sector-header{
+    text-align: center;
+}
+
+.market-sector-body{
+    text-align: left;
 }

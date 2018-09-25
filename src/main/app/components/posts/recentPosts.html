@@ -1,9 +1,9 @@
 <div class="container">
     <div data-ng-repeat="post in posts">
-        <div class="jumbotron">
-
-            <a class="card-header" data-ui-sref="specificPost({slug:post.slug})" data-ui-sref-active="active"><h1>{{post.title}}</h1></a>
-
+        <div class="card bg-dark text-white">
+            <a class="card-title" data-ui-sref="base.specificPost({slug:post.slug})" data-ui-sref-active="active"><h1>{{post.title}}</h1></a>
+            <img class="card-img-top recent-image" src="{{post.feature_image}}" alt="Card image cap"/>
+            <p class="card-text"></p>
         </div>
     </div>
 </div>

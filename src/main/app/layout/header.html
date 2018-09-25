@@ -1,23 +1,29 @@
 
 <!--HEADER-->
 <nav class="navbar navbar-light">
-    <div class="container">
-        <ul class="nav navbar-nav pull-xs-right">
+        <ul class="nav p">
             <li class="nav-item">
-                <a class="nav-link" data-ui-sref = "home" data-ui-sref-active="active"> Home </a>
+                <a class="nav-link" data-ui-sref = "base.home" data-ui-sref-active="active"> Home </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-ui-sref = "recent" data-ui-sref-active="active"> Recent </a>
+                <a class="nav-link" data-ui-sref = "base.learn" data-ui-sref-active="active"> Learn </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-ui-sref = "learn" data-ui-sref-active="active"> Learn </a>
+                <a class="nav-link" data-ui-sref = "base.resources" data-ui-sref-active="active"> Resources </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-ui-sref = "about" data-ui-sref-active="active"> About </a>
+                <a class="nav-link" data-ui-sref = "base.about" data-ui-sref-active="active"> About </a>
             </li>
         </ul>
-    </div>
 </nav>
+
+<div class="container">
+    <canvas class="d-inline-block" id="circle-menu" width=500 height=500 ng-init="update(false)"></canvas>
+    <div class="market-sector-overview d-inline-block">
+        <h1 class="market-sector-header" ng-bind="sectorAnchor"></h1>
+        <p class="market-sector-body"> Characterized by High Growth, high P/E ratio. Semiconductor cycles are generally seen as cyclical.</p>
+    </div>
+</div>
 
 <!--<table border = {true}>-->
     <!--<tr>-->
