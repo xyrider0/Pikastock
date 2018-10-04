@@ -12,6 +12,22 @@ var routerApp = angular.module('routerApp', ['ui.router'], function(){
 
 routerApp.controller('recentController', function($scope, $state, posts){
     $scope.posts = posts;
+
+    $scope.dateGeneration = (ISOString)=>{
+        return new Date(Date.parse(ISOString)).toDateString();
+    }
+
+    $scope.attachImage = (odd_even)=>{
+        var lastCard = $('card-row').last();
+        var lastCardImage = $('.card-image').last();
+
+        if(odd_even % 2){
+            lastCardImage.appendTo('card-row');
+        }
+        else{
+            lastCardImage.prependTo('card-row');
+        }
+    }
 });
 
 routerApp.controller('baseController', function($scope){
@@ -24,6 +40,7 @@ routerApp.controller('baseController', function($scope){
     $scope.set = function($event) {
         $scope.sectorAnchor = $scope.sectorSet;
         $scope.$apply();
+        $('#market-sector-header').css("color", $scope.textColor);
         drawCircleMenu($scope.outerRadius, $scope.outerRadius, $scope.ctx, $scope.innerRadius, $scope.outerRadius, $scope.sectorAngle, $scope.angleWidth, $scope.marketSegments, $scope.sectorAngleAnchor);
     }
 
@@ -33,8 +50,8 @@ routerApp.controller('baseController', function($scope){
             var mouse_y = 0;
         }
         else{
-            var mouse_x = $event.pageX - $scope.circleMenuCanvas.left;
-            var mouse_y = $event.pageY - $scope.circleMenuCanvas.top;
+            var mouse_x = $event.clientX - $scope.circleMenuCanvas.left;
+            var mouse_y = $event.clientY - $scope.circleMenuCanvas.top;
         }
 
         var angleOffset = $scope.sectorAngleAnchor;
@@ -46,6 +63,9 @@ routerApp.controller('baseController', function($scope){
 
     function initVariables(){
         $scope.marketSegments = ["Health Care", "Finance", "Consumables", "Real Estate", "Utilities", "Energy", "Materials", "Tech"];
+        //                    blue     green     grey    pink    yellow    red    brown     purple
+        //$scope.selectColor =["#c6dbe2", "#cbe2c6", "#e2c5c5", "pink", "#e2dfc6", "#e2c6c6", "#d3d2d5", "#cec6e2"];
+        $scope.selectColor = ["blue", "green", "salmon", 'pink', 'steelblue', 'cyan', 'seagreen', 'skyblue'];
         $scope.outerRadius = 250;
         $scope.innerRadius = $scope.outerRadius * 0.3;
         $scope.angleWidth = 2*Math.PI/$scope.marketSegments.length;
@@ -55,8 +75,8 @@ routerApp.controller('baseController', function($scope){
         $scope.sectorAnchor = $scope.marketSegments[$scope.marketSegments.length - 1];
         $scope.raf;
         $scope.eventInProgress = false;
-        $scope.selectColor ="gray";
         $scope.innerColor ="silver";
+        $scope.textColor;
     }
 
     function initCanvas(){
@@ -107,6 +127,7 @@ routerApp.controller('baseController', function($scope){
         }
 
         if(!($scope.eventInProgress && startOffset == -1)){
+            var persistentColor;
             for(var i = 0; i < marketSegments.length; i++)
             {
                 var startAngle = (i* angleWidth + angleOffsetStep) %(Math.PI * 2);
@@ -114,30 +135,31 @@ routerApp.controller('baseController', function($scope){
                 var selectColor = $scope.selectColor;
                 var innerColor = $scope.innerColor;
                 var color = $scope.my_gradient;
-//                var color = "#256645";
+                var textColor = "white";
+                if(startAngle >= Math.PI*2 - angleWidth){
+                    textColor = selectColor[i];
+                    persistentColor = textColor;
+                    color = "#555555";
+                }
                 if(startOffset == -1 && inAngle(mangle, startAngle, angleWidth) && inRadius(mradius, innerRadius, outerRadius)){
-                    color = selectColor;
                     $scope.sectorAngle = thisAngle;
                     $scope.sectorSet = marketSegments[i];
+                    textColor = selectColor[i];
+                    $scope.textColor = textColor;
                 }
-                else if(inRadius(mradius, 0, innerRadius)){
-                    innerColor = selectColor;
-                    $scope.sectorSet = 'Learn';
-                }
-                drawCircleMenuSegment(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, color, marketSegments[i]);
+                drawCircleMenuSegment(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, color, marketSegments[i], textColor);
             }
             drawInnerCircle(canvasContext, innerRadius, outerRadius, innerColor);
             canvasContext.save();
             writeInnerLabel(canvasContext, outerRadius);
             canvasContext.restore();
-            if((angleOffsetStep + angleOffsetStepWidth)%(Math.PI * 2) < angleOffset && $scope.sectorSet != 'Learn'){
+            if((angleOffsetStep + angleOffsetStepWidth)%(Math.PI * 2) < angleOffset && $scope.sectorSet != 'Sector'){
                 $scope.raf = window.requestAnimationFrame(function(){drawCircleMenu(mangle, mradius, canvasContext, innerRadius, outerRadius, angleOffset, angleWidth, marketSegments, startOffset + angleOffsetStepWidth)});
                 $scope.sectorAngleAnchor = $scope.sectorAngle;
             }
             else{
                 window.cancelAnimationFrame($scope.raf);
                 $scope.eventInProgress = false;
-                //enlargeCircleMenu(canvasContext, innerRadius, 1.3*outerRadius, angleWidth, innerColor, $scope.my_gradient);
             }
         }
     }
@@ -150,10 +172,10 @@ routerApp.controller('baseController', function($scope){
 //        canvasContext.restore();
 //    }
 
-    function drawCircleMenuSegment(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, color, text){
+    function drawCircleMenuSegment(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, color, text, textColor){
         drawOuterSegment(canvasContext, outerRadius, startAngle, angleWidth, color);
         canvasContext.save();
-        writeOuterLabel(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, text);
+        writeOuterLabel(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, text, textColor);
         canvasContext.restore();
     }
 
@@ -166,13 +188,13 @@ routerApp.controller('baseController', function($scope){
         canvasContext.fill();
     }
 
-    function writeOuterLabel(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, text){
+    function writeOuterLabel(canvasContext, innerRadius, outerRadius, startAngle, angleWidth, text, textColor){
         canvasContext.translate(outerRadius, outerRadius);
         let centerAngle = startAngle + angleWidth/2;
         let centerRadius = (innerRadius + outerRadius)/2;
         canvasContext.beginPath();
-        canvasContext.font = "18pt Calibri";
-        canvasContext.fillStyle = 'silver';
+        canvasContext.font = "20pt Arial";
+        canvasContext.fillStyle = textColor;
         canvasContext.textAlign = 'center';
         canvasContext.textBaseline='middle';
         canvasContext.fillText(text, Math.cos(centerAngle)*centerRadius, Math.sin(centerAngle)*centerRadius);
@@ -186,7 +208,7 @@ routerApp.controller('baseController', function($scope){
         canvasContext.fill();
     }
 
-    function writeInnerLabel(canvasContext, outerRadius, text = 'Learn'){
+    function writeInnerLabel(canvasContext, outerRadius, text = 'Sector'){
         canvasContext.translate(outerRadius, outerRadius);
         canvasContext.beginPath();
         canvasContext.font = "18pt Calibri";
@@ -216,6 +238,22 @@ routerApp.controller('baseController', function($scope){
     }
 });
 
+routerApp.controller('footerController', function($scope){
+
+    $("#sendFeedbackButton").click(function(){
+        $("#sendFeedbackButton").hide();
+        $("#contact-us").show();
+    });
+
+    $("#hideFeedbackButton").click(function(){
+        $("#sendFeedbackButton").show();
+        $("#contact-us").hide();
+    })
+
+    $("#contact-us").hide();
+});
+
+
 routerApp.controller('specificPostController', function($scope, singlePost){
     $scope.singlePostTitle = singlePost.title;
     $scope.singlePostHtml = singlePost.html;
@@ -235,7 +273,8 @@ routerApp.config(function($stateProvider, $urlRouterProvider){
                 template:"<div ui-view></div>"
             },
             'footer': {
-                templateUrl:"app/layout/footer.html"
+                templateUrl:"app/layout/footer.html",
+                controller:"footerController"
             }
         }
     }
@@ -251,6 +290,7 @@ routerApp.config(function($stateProvider, $urlRouterProvider){
         },
         resolve:{
             posts: function() {
+//                return $.get(ghost.url.api('posts', {include:"post, authors, tags", filter:"authors:eric+tags:tech"}))
                 return $.get(ghost.url.api('posts', {include:"post, authors, tags", filter:"authors:eric"}))
                 .then(function(data){
                     console.log(data);
@@ -271,6 +311,13 @@ routerApp.config(function($stateProvider, $urlRouterProvider){
         url: '/about',
         template: '<h1> About Section Placeholder </h1>'
     }
+
+    var resourcesState = {
+        name: 'base.resources',
+        url: '/resources',
+        template: '<h1> Resources Section Placeholder </h1>'
+    }
+
 
     var specificPost = {
         name: 'base.specificPost',
@@ -297,5 +344,6 @@ routerApp.config(function($stateProvider, $urlRouterProvider){
     $stateProvider.state(homeState);
     $stateProvider.state(learnState);
     $stateProvider.state(aboutState);
+    $stateProvider.state(resourcesState);
     $stateProvider.state(specificPost);
 });

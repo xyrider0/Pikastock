@@ -17,11 +17,15 @@
         </ul>
 </nav>
 
-<div class="container">
-    <canvas class="d-inline-block" id="circle-menu" width=500 height=500 ng-init="update(false)"></canvas>
-    <div class="market-sector-overview d-inline-block">
-        <h1 class="market-sector-header" ng-bind="sectorAnchor"></h1>
-        <p class="market-sector-body"> Characterized by High Growth, high P/E ratio. Semiconductor cycles are generally seen as cyclical.</p>
+
+<canvas id="circle-menu" width=500 height=500 data-ng-init="update(false)"></canvas>
+
+<div class="content">
+    <div class="container">
+        <!--<div class="market-sector-overview d-inline-block">-->
+        <h1 id="market-sector-header" data-ng-bind="sectorAnchor"></h1>
+        <p id="market-sector-body"> Characterized by High Growth, high P/E ratio. XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXSemiconductor cycles are generally seen as cyclical.</p>
+        <!--</div>-->
     </div>
 </div>
 

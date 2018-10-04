@@ -1,10 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+<footer>
+    <button id="sendFeedbackButton" type="button" class="btn btn-default" aria-label="Send Feedback">
+        Feedback
+    </button>
+    <div id="contact-us">
+        <form>
+            <div class="form-group">
+                <label for="contactUsControlInput1">Email address</label>
+                <input type="email" class="form-control" id="contactUsControlInput1" placeholder="name@example.com">
+            </div>
+            <div class="form-group">
+                <label for="contactUsControlTextArea1">Feedback</label>
+                <textarea class="form-control" id="contactUsControlTextArea1" rows="3"></textarea>
+            </div>
+            <span>
+                <button class="btn btn-primary">Send</button>
+                <button id="hideFeedbackButton" type="button" class="btn btn-default" aria-hidden="true">Hide</button>
+            </span>
+        </form>
+    </div>
+</footer>
