@@ -1,2 +1,2 @@
-let layoutModule = angular.module('app.layout', []);
+//let layoutModule = angular.module('app.layout', []);
 
