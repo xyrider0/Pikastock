@@ -11,7 +11,7 @@ var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
 
 // Where our files are located
-var jsFiles   = "src/main/app/*.js";
+var jsFiles   = "src/main/app/**/*.js";
 var viewFiles = "src/main/app/**/*.html";
 
 var interceptErrors = function(error) {

@@ -5,8 +5,8 @@
     <!-- Angular Libs-->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.17/angular-ui-router.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.3/angular-sanitize.min.js"><</script>
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script>-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-sanitize/1.7.3/angular-sanitize.min.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.0rc1/angular-route.min.js"></script> -->
 
     <!--Jquery Libs-->
     <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
@@ -23,18 +23,15 @@
 
     <!-- Main Scripts-->
     <script src="../../build/main.js"></script>
-    <!--<script src="app/app.module.js"></script>-->
+    <!-- <script src="app/app.js" type="module"></script> -->
 
     <meta charset="UTF-8">
     <title>PikaStock</title>
     <link rel="stylesheet" type="text/css" href="assets/css/index.css">
 </head>
 
-<body id="main-body" data-ng-app="App">
-
-    <!--<div id="header" ng-include="'app/layout/header.html'"></div>-->
-    <div data-ui-view = "header"></div>
+<body id="main-body" data-ng-app="App" ng-strict-di>
+    <div data-ui-view="header"></div>
     <div data-ui-view="content"></div>
-    <div data-ui-view = "footer"></div>
-
+    <div data-ui-view="footer"></div>
 </body>
