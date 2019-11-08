@@ -1,10 +1,4 @@
 function AppConfig($stateProvider, $urlRouterProvider){
-    
-    ghost.init({
-        clientId: "ghost-frontend",
-        // clientSecret: "fa26a7f1b444",
-        clientSecret: "53b841cbb53d"
-    })
 
     var baseState = {
         name: 'base',
@@ -15,7 +9,7 @@ function AppConfig($stateProvider, $urlRouterProvider){
                 // controller:"headerController"
             },
             'content': {
-                template:'<div ui-view>Test</div>'
+                template:'<div ui-view></div>'
             },
             'footer': {
                 templateUrl:"app/components/core/footer/footer.html",
@@ -28,14 +22,7 @@ function AppConfig($stateProvider, $urlRouterProvider){
         name: 'base.home',
         url: '/home',
         templateUrl: "app/components/recent/recentView.html",
-        controller: 'recentController',
-        resolve:{
-            posts: function() {
-                return $.get(ghost.url.api('posts', {include:"post, authors, tags", filter:"authors:eric"})).then(
-                    (data) => data.posts
-                );
-            }
-        }
+        controller: 'recentController'
     }
 
     var learnState = {
@@ -54,12 +41,11 @@ function AppConfig($stateProvider, $urlRouterProvider){
         name: 'base.article',
         url: '/article/:slug',
         templateUrl: "app/shared/article/articleView.html",
-        //controller: 'articleController',
+        controller: 'articleController',
         resolve:{
-            article: ['$stateParams', function($stateParams) {
-                return $.get(ghost.url.api('posts/slug/' + $stateParams.slug)).then(
-                    (articles) => articles.posts[0],
-                    (err) => $state.go('base.home')
+            article: [function() {
+                return $.get('/article/:slug').success(
+                    (data) => data.posts[0]
                 )
             }]
         }

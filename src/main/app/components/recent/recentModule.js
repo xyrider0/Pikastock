@@ -1,7 +1,10 @@
 let recentModule = angular.module('App.recent', []);
 
-recentModule.controller('recentController', ['$scope', '$state', function($scope, $state, posts){
-    $scope.posts = posts;
+recentModule.controller('recentController', ['$scope', '$state', function($scope, $state){
+    $.get('/posts').then(function(posts){
+        console.log(posts);
+        $scope.posts = posts;
+    })
 
     $scope.dateGeneration = (ISOString)=>{
         return new Date(Date.parse(ISOString)).toDateString();
