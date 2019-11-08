@@ -362,8 +362,10 @@ Object.defineProperty(exports, "__esModule", {
 });
 var recentModule = angular.module('App.recent', []);
 
-recentModule.controller('recentController', ['$scope', '$state', function ($scope, $state, posts) {
-    $scope.posts = posts;
+recentModule.controller('recentController', ['$scope', '$state', function ($scope, $state) {
+    $.get('/posts').success(function (posts) {
+        $scope.posts = posts;
+    });
 
     $scope.dateGeneration = function (ISOString) {
         return new Date(Date.parse(ISOString)).toDateString();
@@ -384,18 +386,12 @@ recentModule.controller('recentController', ['$scope', '$state', function ($scop
 exports.default = recentModule;
 
 },{}],7:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
 function AppConfig($stateProvider, $urlRouterProvider) {
-
-    ghost.init({
-        clientId: "ghost-frontend",
-        // clientSecret: "fa26a7f1b444",
-        clientSecret: "53b841cbb53d"
-    });
 
     var baseState = {
         name: 'base',
@@ -406,7 +402,7 @@ function AppConfig($stateProvider, $urlRouterProvider) {
                 // controller:"headerController"
             },
             'content': {
-                template: '<div ui-view>Test</div>'
+                template: '<div ui-view></div>'
             },
             'footer': {
                 templateUrl: "app/components/core/footer/footer.html",
@@ -419,14 +415,7 @@ function AppConfig($stateProvider, $urlRouterProvider) {
         name: 'base.home',
         url: '/home',
         templateUrl: "app/components/recent/recentView.html",
-        controller: 'recentController',
-        resolve: {
-            posts: function posts() {
-                return $.get(ghost.url.api('posts', { include: "post, authors, tags", filter: "authors:eric" })).then(function (data) {
-                    return data.posts;
-                });
-            }
-        }
+        controller: 'recentController'
     };
 
     var learnState = {
@@ -445,13 +434,11 @@ function AppConfig($stateProvider, $urlRouterProvider) {
         name: 'base.article',
         url: '/article/:slug',
         templateUrl: "app/shared/article/articleView.html",
-        //controller: 'articleController',
+        controller: 'articleController',
         resolve: {
-            article: ['$stateParams', function ($stateParams) {
-                return $.get(ghost.url.api('posts/slug/' + $stateParams.slug)).then(function (articles) {
-                    return articles.posts[0];
-                }, function (err) {
-                    return $state.go('base.home');
+            article: [function () {
+                return $.get('/article/:slug').success(function (data) {
+                    return data.posts[0];
                 });
             }]
         }
