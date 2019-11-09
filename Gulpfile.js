@@ -9,10 +9,12 @@ var rename        = require('gulp-rename');
 var templateCache = require('gulp-angular-templatecache');
 var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
+var concat        = require('gulp-concat');
 
 // Where our files are located
 var jsFiles   = "src/main/app/**/*.js";
 var viewFiles = "src/main/app/**/*.html";
+var cssFiles = "src/main/app/**/**.cs";
 
 var interceptErrors = function(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -40,10 +42,17 @@ gulp.task('browserify', ['views'], function() {
 });
 
 gulp.task('html', function() {
-  return gulp.src("src/index.html")
+  return gulp.src("src/main/index.html")
       .on('error', interceptErrors)
       .pipe(gulp.dest('src/main/build/'));
 });
+
+gulp.task('pack-css', function(){
+  return gulp.src(['src/main/assets/css/index.css'])
+        .on('error', interceptErrors)
+        .pipe(concat('stylesheet.css'))
+        .pipe(gulp.dest('src/main/build/'))
+})
 
 gulp.task('views', function() {
   return gulp.src(viewFiles)
@@ -52,7 +61,7 @@ gulp.task('views', function() {
       }))
       .on('error', interceptErrors)
       .pipe(rename("app.templates.js"))
-      .pipe(gulp.dest('./src/config/'));
+      .pipe(gulp.dest('./src/main/app/config/'));
 });
 
 // This task is used for building production ready
@@ -68,18 +77,19 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html', 'browserify'], function() {
+gulp.task('default', ['html', 'browserify', 'pack-css'], function() {
 
-//  browserSync.init(['./build/**/**.**'], {
-//    server: "./build",
-//    port: 4000,
-//    notify: false,
-//    ui: {
-//      port: 4001
-//    }
-//  });
+  browserSync.init(['src/main/build/**/**.**'], {
+    server: "src/main/build",
+    port: 4000,
+    notify: false,
+    ui: {
+      port: 4001
+    }
+  });
 
   gulp.watch("src/main/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
   gulp.watch(jsFiles, ['browserify']);
+  gulp.watch(cssFiles, ['pack-css'])
 });

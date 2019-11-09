@@ -5,23 +5,23 @@ function AppConfig($stateProvider, $urlRouterProvider){
         url: '',
         views: {
             'header': {
-                templateUrl:"app/components/core/header/header.html"
+                templateUrl:"components/core/header/header.html"
                 // controller:"headerController"
             },
             'content': {
                 template:'<div ui-view></div>'
             },
             'footer': {
-                templateUrl:"app/components/core/footer/footer.html",
+                templateUrl:"components/core/footer/footer.html",
                 controller:"footerController"
             }
         }
     }
 
-    var homeState = {
-        name: 'base.home',
-        url: '/home',
-        templateUrl: "app/components/recent/recentView.html",
+    var blogState = {
+        name: 'base.blog',
+        url: '/blog',
+        templateUrl: "components/recent/recentView.html",
         controller: 'recentController'
     }
 
@@ -40,7 +40,7 @@ function AppConfig($stateProvider, $urlRouterProvider){
     var specificPost = {
         name: 'base.article',
         url: '/article/:slug',
-        templateUrl: "app/shared/article/articleView.html",
+        templateUrl: "shared/article/articleView.html",
         controller: 'articleController',
         resolve:{
             article: [function() {
@@ -51,14 +51,21 @@ function AppConfig($stateProvider, $urlRouterProvider){
         }
     }
 
+    var dashboardState = {
+        name: 'base.dashboard',
+        url: '/dashboard',
+        templateUrl: 'components/dashboard/dashboardView.html'
+        // controller: 'dashboardController'
+    }
 
     $stateProvider.state(baseState);
-    $stateProvider.state(homeState);
+    $stateProvider.state(blogState);
     $stateProvider.state(learnState);
     $stateProvider.state(resourcesState);
     $stateProvider.state(specificPost);
+    $stateProvider.state(dashboardState);
 
-    $urlRouterProvider.otherwise('/home');
+    $urlRouterProvider.otherwise('');
 };
 
 AppConfig.$inject = ["$stateProvider", "$urlRouterProvide"];

@@ -10,7 +10,9 @@ import './config/app.templates';
 import './components/about/aboutModule.js';
 import './components/core/coreModule.js';
 import './components/recent/recentModule.js';
+
 import './shared/article/articleModule.js';
+// Add Stock view module
 
 // Create and bootstrap application
 const requires = [

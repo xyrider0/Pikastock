@@ -12,6 +12,7 @@ const api = new GhostContentAPI({
 });
 
 app.get('/posts', function(req, res){
+    
     var data = api.posts.browse({include:"post, authors, tags", filter:"authors:eric"});
     res.json(data);
 });
@@ -20,6 +21,13 @@ app.get('/article:slug', function(req, res){
     res.json(api.posts.get('posts/slug/' + req.param.slug).posts[0]);
 });
 
+// Robinhood API
+// Straight url call
+
+// Ally Trading/ Tradeking
+
+// Alpha Vantage
+// Has no option information
 
 app.listen(3000);
 console.log("Server running on port 3000")
