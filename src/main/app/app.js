@@ -10,6 +10,7 @@ import './config/app.templates';
 import './components/about/aboutModule.js';
 import './components/core/coreModule.js';
 import './components/recent/recentModule.js';
+import './components/dashboard/dashboardModule.js';
 
 import './shared/article/articleModule.js';
 // Add Stock view module
@@ -21,7 +22,8 @@ const requires = [
   'App.about',
   'App.core',
   'App.recent',
-  'App.article'
+  'App.article',
+  'App.dashboard'
 ];
 
 // Mount on window for testing

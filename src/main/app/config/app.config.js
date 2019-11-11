@@ -54,9 +54,16 @@ function AppConfig($stateProvider, $urlRouterProvider){
     var dashboardState = {
         name: 'base.dashboard',
         url: '/dashboard',
-        templateUrl: 'components/dashboard/dashboardView.html'
-        // controller: 'dashboardController'
+        templateUrl: 'components/dashboard/dashboardView.html',
+        controller: 'dashboardController'
     }
+
+    var aboutState = {
+        name: 'base.about',
+        url: '/about',
+        template: '<h1> About Section Placeholder </h1>'
+    }
+
 
     $stateProvider.state(baseState);
     $stateProvider.state(blogState);
@@ -64,6 +71,7 @@ function AppConfig($stateProvider, $urlRouterProvider){
     $stateProvider.state(resourcesState);
     $stateProvider.state(specificPost);
     $stateProvider.state(dashboardState);
+    $stateProvider.state(aboutState);
 
     $urlRouterProvider.otherwise('');
 };

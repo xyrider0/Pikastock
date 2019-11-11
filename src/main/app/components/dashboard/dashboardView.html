@@ -1,13 +1,26 @@
 <html>
-    <table>
-        <th>
-            <td>Stock</td>
-            <td></td>
-        </th>
-        <tr>
-            <!--Want user to be able to type in for stock ticker -->
-            <td ng-input=''></td>
-            <td></td>
-        </tr>
-    </table>
+    <container>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Ticker</th>
+                    <th>Name</th>
+                    <th>Shares</th>
+                    <!-- # Shares, $ amount, or % of portfolio -->
+                    <th>Today's Return</th>
+                    <th>Total Return</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="stock in stock_list">
+                    <td>{{stock.ticker}}</td>
+                    <td>{{stock.name}}</td>
+                    <td>{{stock.shares}}</td>
+                    <td>{{stock.today_return}}</td>
+                    <td>{{stock.total_return}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </container>
 </html>

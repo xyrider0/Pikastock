@@ -10,6 +10,7 @@ var templateCache = require('gulp-angular-templatecache');
 var uglify        = require('gulp-uglify');
 var merge         = require('merge-stream');
 var concat        = require('gulp-concat');
+var nodemon       = require('gulp-nodemon');
 
 // Where our files are located
 var jsFiles   = "src/main/app/**/*.js";
@@ -30,7 +31,7 @@ var interceptErrors = function(error) {
 };
 
 gulp.task('browserify', ['views'], function() {
-  return browserify('src/main/app/app.js')
+  return browserify('src/main/app/app.js', {bare: true, browserField: false})
       .transform(babelify, {presets: ["es2015"]})
       .transform(ngAnnotate)
       .bundle()
@@ -77,16 +78,32 @@ gulp.task('build', ['html', 'browserify'], function() {
   return merge(html,js);
 });
 
-gulp.task('default', ['html', 'browserify', 'pack-css'], function() {
-
-  browserSync.init(['src/main/build/**/**.**'], {
-    server: "src/main/build",
-    port: 4000,
-    notify: false,
-    ui: {
-      port: 4001
+gulp.task('nodemon', function(cb){
+  var callbackCalled = false;
+  return nodemon({script: './src/main/server.js'}).on('start', function(){
+    if(!callbackCalled){
+      callbackCalled = true;
+      cb();
     }
+  })
+})
+
+gulp.task('browser-sync', ['nodemon'], function(){
+  browserSync.init(null, {
+    proxy: "http://localhost:8000", // port of node server
   });
+})
+
+gulp.task('default', ['html', 'browserify', 'pack-css', 'browser-sync'], function() {
+
+  // browserSync.init(['src/main/build/**/**.**'], {
+  //   server: "src/main/build",
+  //   port: 4000,
+  //   notify: false,
+  //   ui: {
+  //     port: 4001
+  //   }
+  // });
 
   gulp.watch("src/main/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
