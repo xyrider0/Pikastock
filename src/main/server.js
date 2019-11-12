@@ -38,13 +38,15 @@ app.get('/stocklist', function(req, res){
 });
 
 app.get('/posts', function(req, res){
-    
-    var data = api.posts.browse({include:"post, authors, tags", filter:"authors:eric"});
-    res.json(data);
+    var data = api.posts.browse({include:"post, authors, tags", filter:"authors:eric"}).then(function(data){
+        res.json(data);
+    });
 });
 
-app.get('/article:slug', function(req, res){
-    res.json(api.posts.get('posts/slug/' + req.param.slug).posts[0]);
+app.get('/article', function(req, res){
+    api.posts.read({slug: req.query.slug}).then(function(data){
+        res.json(data);
+    });
 });
 
 // Robinhood API

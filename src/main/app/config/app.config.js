@@ -37,18 +37,11 @@ function AppConfig($stateProvider, $urlRouterProvider){
         template: '<h1> Resources Section Placeholder </h1>'
     }
 
-    var specificPost = {
+    var article = {
         name: 'base.article',
         url: '/article/:slug',
         templateUrl: "shared/article/articleView.html",
-        controller: 'articleController',
-        resolve:{
-            article: [function() {
-                return $.get('/article/:slug').success(
-                    (data) => data.posts[0]
-                )
-            }]
-        }
+        controller: 'articleController'
     }
 
     var dashboardState = {
@@ -69,7 +62,7 @@ function AppConfig($stateProvider, $urlRouterProvider){
     $stateProvider.state(blogState);
     $stateProvider.state(learnState);
     $stateProvider.state(resourcesState);
-    $stateProvider.state(specificPost);
+    $stateProvider.state(article);
     $stateProvider.state(dashboardState);
     $stateProvider.state(aboutState);
 

@@ -33,6 +33,7 @@
     "ghost": "^3.0.2",
     "gulp-nodemon": "^2.4.2",
     "gulp-sass": "^4.0.1",
-    "http-server": "^0.11.1"
+    "http-server": "^0.11.1",
+    "mysql": "^2.17.1"
   }
 }

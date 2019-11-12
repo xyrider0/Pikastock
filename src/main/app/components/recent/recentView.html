@@ -1,4 +1,4 @@
-<div class="content">
+<div class="content" ng-controller='recentController'>
     <div class="container">
         <div data-ng-repeat="post in posts">
             <div class="card bg-dark text-white">
@@ -6,18 +6,17 @@
                     <div class="col">
                         <div class="card-block px-2">
                             <h2>
-                                <a data-ui-sref="base.specificPost({slug:post.slug})" data-ui-sref-active="active">{{post.title}}</a>
+                                <a data-ui-sref="base.article({slug:post.slug})" data-ui-sref-active="active">{{post.title}}</a>
                             </h2>
                             <div class="published_at">
-                                <!--{{new Date(Date.parse(post.created_at)).toDateString()}}-->
                                 {{dateGeneration(post.created_at)}}
                             </div>
                             <p class="card-text"></p>
                         </div>
                     </div>
                     <div class="col-auto">
-                        <a data-ui-sref="base.specificPost({slug:post.slug})" data-ui-sref-active="active">
-                            <img class="recent-image" src="assets\img\BaozunThumbnail.png" height="300"/>
+                        <a data-ui-sref="base.article({slug:post.slug})" data-ui-sref-active="active">
+                            <img class="recent-image" height="300"/>
                         </a>
                     </div>
                 </div>

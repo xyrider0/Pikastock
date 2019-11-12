@@ -358,9 +358,13 @@ Object.defineProperty(exports, "__esModule", {
 var dashboardModule = angular.module('App.dashboard', []);
 
 dashboardModule.controller('dashboardController', ['$scope', function ($scope) {
-    $scope.stock_list = $.get('/stocklist').then(function (response) {
-        $scope.stock_list = response.data;
+    $.get('/stocklist').then(function (response) {
+        $scope.$apply(function () {
+            $scope.stock_list = response;
+        });
     });
+
+    $scope.addStock = function () {};
 }]);
 
 exports.default = dashboardModule;
@@ -375,8 +379,9 @@ var recentModule = angular.module('App.recent', []);
 
 recentModule.controller('recentController', ['$scope', '$state', function ($scope, $state) {
     $.get('/posts').then(function (posts) {
-        console.log(posts);
-        $scope.posts = posts;
+        $scope.$apply(function () {
+            $scope.posts = posts;
+        });
     });
 
     $scope.dateGeneration = function (ISOString) {
@@ -394,30 +399,6 @@ recentModule.controller('recentController', ['$scope', '$state', function ($scop
         }
     };
 }]);
-
-/*
-var app = angular.module('PikasstockApp', ['ngRoute']);
-
-app.controller("PostCtrl", ['$scope', function($scope)
-{
-    $scope.ghostVerification = {
-        clientID: "ghost-frontend",
-        clientSecret: "53b841cbb53d"
-    };
-
-    $scope.posts = $.get(ghost.url.api('posts', {limit:3}))
-    .done(onSuccess)
-    .fail(function(err){
-        $scope.postTitles.append('<li> Nothing Received </li>');
-        console.log(err);
-    });
-
-    function onSuccess(data){
-        $.each(data.posts, function(i, post){
-            $scope.postTitles.append('<li>' + post.title + '</li>');
-        });
-    }
-}]);*/
 
 exports.default = recentModule;
 
@@ -466,18 +447,11 @@ function AppConfig($stateProvider, $urlRouterProvider) {
         template: '<h1> Resources Section Placeholder </h1>'
     };
 
-    var specificPost = {
+    var article = {
         name: 'base.article',
         url: '/article/:slug',
         templateUrl: "shared/article/articleView.html",
-        controller: 'articleController',
-        resolve: {
-            article: [function () {
-                return $.get('/article/:slug').success(function (data) {
-                    return data.posts[0];
-                });
-            }]
-        }
+        controller: 'articleController'
     };
 
     var dashboardState = {
@@ -497,7 +471,7 @@ function AppConfig($stateProvider, $urlRouterProvider) {
     $stateProvider.state(blogState);
     $stateProvider.state(learnState);
     $stateProvider.state(resourcesState);
-    $stateProvider.state(specificPost);
+    $stateProvider.state(article);
     $stateProvider.state(dashboardState);
     $stateProvider.state(aboutState);
 
@@ -534,9 +508,9 @@ exports.default = AppRun;
 'use strict';
 
 angular.module('templates', []).run(['$templateCache', function ($templateCache) {
-  $templateCache.put('components/dashboard/dashboardView.html', '<html>\r\n    <container>\r\n        <table class="table">\r\n            <thead>\r\n                <tr>\r\n                    <th>Ticker</th>\r\n                    <th>Name</th>\r\n                    <th>Shares</th>\r\n                    <!-- # Shares, $ amount, or % of portfolio -->\r\n                    <th>Today\'s Return</th>\r\n                    <th>Total Return</th>\r\n                    <th></th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr ng-repeat="stock in stock_list">\r\n                    <td>{{stock.ticker}}</td>\r\n                    <td>{{stock.name}}</td>\r\n                    <td>{{stock.shares}}</td>\r\n                    <td>{{stock.today_return}}</td>\r\n                    <td>{{stock.total_return}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </container>\r\n</html>');
-  $templateCache.put('components/recent/recentView.html', '<div class="content">\r\n    <div class="container">\r\n        <div data-ng-repeat="post in posts">\r\n            <div class="card bg-dark text-white">\r\n                <div class="row no-gutters card-row">\r\n                    <div class="col">\r\n                        <div class="card-block px-2">\r\n                            <h2>\r\n                                <a data-ui-sref="base.specificPost({slug:post.slug})" data-ui-sref-active="active">{{post.title}}</a>\r\n                            </h2>\r\n                            <div class="published_at">\r\n                                <!--{{new Date(Date.parse(post.created_at)).toDateString()}}-->\r\n                                {{dateGeneration(post.created_at)}}\r\n                            </div>\r\n                            <p class="card-text"></p>\r\n                        </div>\r\n                    </div>\r\n                    <div class="col-auto">\r\n                        <a data-ui-sref="base.specificPost({slug:post.slug})" data-ui-sref-active="active">\r\n                            <img class="recent-image" src="assets\\img\\BaozunThumbnail.png" height="300"/>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n                <div class="card-footer w-100"></div>\r\n                <!--<img class="card-img-top recent-image" src="{{post.feature_image}}" alt="Card image cap"/>-->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n');
-  $templateCache.put('shared/article/articleView.html', '<div class="content">\r\n    <div class="container">\r\n        <h2> {{articleTitle}} </h2>\r\n        <div data-ng-bind-html="articleHtml | to_trusted"> </div>\r\n    </div>\r\n</div>\r\n');
+  $templateCache.put('components/dashboard/dashboardView.html', '<html>\r\n    <container ng-controller="dashboardController">\r\n        <table class="table">\r\n            <thead>\r\n                <tr>\r\n                    <th>Ticker</th>\r\n                    <th>Name</th>\r\n                    <th>Shares</th>\r\n                    <!-- # Shares, $ amount, or % of portfolio -->\r\n                    <th>Today\'s Return</th>\r\n                    <th>Total Return</th>\r\n                    <th>Action</th>\r\n                </tr>\r\n            </thead>\r\n            <tbody>\r\n                <tr>\r\n                    <td input class="form-control" ng-model=\'stock.ticker\'></td>\r\n                    <td></td>\r\n                    <td></td>\r\n                    <td></td>\r\n                    <td></td>\r\n                    <td><button class="btn btn-primary" ng-click="addStock()"></button></td>\r\n                </tr>\r\n                <tr ng-repeat="stock in stock_list">\r\n                    <td>{{stock.ticker}}</td>\r\n                    <td>{{stock.name}}</td>\r\n                    <td>{{stock.shares}}</td>\r\n                    <td>{{stock.today_return}}</td>\r\n                    <td>{{stock.total_return}}</td>\r\n                </tr>\r\n            </tbody>\r\n        </table>\r\n    </container>\r\n</html>');
+  $templateCache.put('shared/article/articleView.html', '<div class="content" ng-controller="articleController">\r\n    <div class="container">\r\n        <h2> {{articleTitle}} </h2>\r\n        <div data-ng-bind-html="articleHtml | to_trusted"> </div>\r\n    </div>\r\n</div>\r\n');
+  $templateCache.put('components/recent/recentView.html', '<div class="content" ng-controller=\'recentController\'>\r\n    <div class="container">\r\n        <div data-ng-repeat="post in posts">\r\n            <div class="card bg-dark text-white">\r\n                <div class="row no-gutters card-row">\r\n                    <div class="col">\r\n                        <div class="card-block px-2">\r\n                            <h2>\r\n                                <a data-ui-sref="base.article({slug:post.slug})" data-ui-sref-active="active">{{post.title}}</a>\r\n                            </h2>\r\n                            <div class="published_at">\r\n                                {{dateGeneration(post.created_at)}}\r\n                            </div>\r\n                            <p class="card-text"></p>\r\n                        </div>\r\n                    </div>\r\n                    <div class="col-auto">\r\n                        <a data-ui-sref="base.article({slug:post.slug})" data-ui-sref-active="active">\r\n                            <img class="recent-image" height="300"/>\r\n                        </a>\r\n                    </div>\r\n                </div>\r\n                <div class="card-footer w-100"></div>\r\n                <!--<img class="card-img-top recent-image" src="{{post.feature_image}}" alt="Card image cap"/>-->\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n');
   $templateCache.put('components/core/footer/footer.html', '<footer>\r\n    <button id="sendFeedbackButton" ng-click="toggleFeedback()" type="button" class="btn btn-default" aria-label="Send Feedback">\r\n        Feedback\r\n    </button>\r\n    <div id="contact-us">\r\n        <form>\r\n            <div class="form-group">\r\n                <label for="contactUsControlInput1">Email address</label>\r\n                <input type="email" class="form-control" id="contactUsControlInput1" placeholder="name@example.com">\r\n            </div>\r\n            <div class="form-group">\r\n                <label for="contactUsControlTextArea1">Feedback</label>\r\n                <textarea class="form-control" id="contactUsControlTextArea1" rows="3"></textarea>\r\n            </div>\r\n            <span>\r\n                <button class="btn btn-primary">Send</button>\r\n                <!-- <button id="hideFeedbackButton" type="button" class="btn btn-default" aria-hidden="true">Hide</button> -->\r\n            </span>\r\n        </form>\r\n    </div>\r\n</footer>\r\n');
   $templateCache.put('components/core/header/header.html', '<!--HEADER-->\n<nav class="navbar navbar-light">\n        <ul class="nav p">\n            <li class="nav-item">\n                <a class="nav-link" data-ui-sref = "base.dashboard" data-ui-sref-active="active"> Dashboard </a>\n            </li>\n            <li class="nav-item">\n                <a class="nav-link" data-ui-sref = "base.blog" data-ui-sref-active="active"> Blog </a>\n            </li>\n            <li class="nav-item">\n                <a class="nav-link" data-ui-sref = "base.learn" data-ui-sref-active="active"> Learn </a>\n            </li>\n            <li class="nav-item">\n                <a class="nav-link" data-ui-sref = "base.resources" data-ui-sref-active="active"> Resources </a>\n            </li>\n            <li class="nav-item">\n                <a class="nav-link" data-ui-sref = "base.about" data-ui-sref-active="active"> About </a>\n            </li>\n        </ul>\n</nav>\n<!-- <canvas id="circle-menu" width=500 height=500 data-ng-init="update(false)"></canvas> -->\n</div>');
 }]);
@@ -549,9 +523,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 var articleModule = angular.module('App.article', []);
 
-articleModule.controller('articleController', ['$scope', function ($scope, article) {
-    $scope.articleTitle = article.title;
-    $scope.articleHtml = article.html;
+articleModule.controller('articleController', ['$scope', '$stateParams', function ($scope, $stateParams) {
+    var slug = $stateParams.slug;
+    $.get('/article', { slug: slug }).then(function (post) {
+        $scope.$apply(function () {
+            $scope.articleTitle = post.title;
+            $scope.articleHtml = post.html;
+        });
+    });
 }]);
 
 exports.default = articleModule;
