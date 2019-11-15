@@ -13,9 +13,10 @@ var concat        = require('gulp-concat');
 var nodemon       = require('gulp-nodemon');
 
 // Where our files are located
+var server    = 'server.js';
 var jsFiles   = "src/main/app/**/*.js";
 var viewFiles = "src/main/app/**/*.html";
-var cssFiles = "src/main/app/**/**.cs";
+var cssFiles  = "src/main/app/**/**.cs";
 
 var interceptErrors = function(error) {
   var args = Array.prototype.slice.call(arguments);
@@ -92,7 +93,7 @@ gulp.task('pack-images', function() {
 
 gulp.task('nodemon', function(cb){
   var callbackCalled = false;
-  return nodemon({script: 'server.js'}).on('start', function(){
+  return nodemon({script: server}).on('start', function(){
     if(!callbackCalled){
       callbackCalled = true;
       cb();
@@ -105,7 +106,7 @@ gulp.task('browser-sync', ['nodemon'], function(){
     proxy: "http://localhost:8000", // port of node server
     reloadDelay: 1000
   });
-  gulp.watch([viewFiles, jsFiles, cssFiles]).on("change", browserSync.reload)
+  gulp.watch([viewFiles, jsFiles, cssFiles, server]).on("change", browserSync.reload)
 })
 
 gulp.task('default', ['html', 'browserify', 'pack-css', 'pack-images', 'browser-sync'], function() {

@@ -19,7 +19,7 @@ app.get('/stocklist', function(req, res){
     
     // Get stock list for user from database
     dummy_stock1 = {
-        ticker: 'MSFT',
+        ticker: 'MSFTO',
         name: 'Microsoft',
         shares: 300,
         orig_price: 120
