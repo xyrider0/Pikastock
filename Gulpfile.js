@@ -91,20 +91,12 @@ gulp.task('nodemon', function(cb){
 gulp.task('browser-sync', ['nodemon'], function(){
   browserSync.init(null, {
     proxy: "http://localhost:8000", // port of node server
+    reloadDelay: 1000
   });
+  gulp.watch([viewFiles, jsFiles, cssFiles]).on("change", browserSync.reload)
 })
 
 gulp.task('default', ['html', 'browserify', 'pack-css', 'browser-sync'], function() {
-
-  // browserSync.init(['src/main/build/**/**.**'], {
-  //   server: "src/main/build",
-  //   port: 4000,
-  //   notify: false,
-  //   ui: {
-  //     port: 4001
-  //   }
-  // });
-
   gulp.watch("src/main/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
   gulp.watch(jsFiles, ['browserify']);

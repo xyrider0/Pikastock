@@ -1,11 +1,11 @@
-<html>
+<div class="dashboard">
     <container ng-controller="dashboardController">
         <table class="table">
             <thead>
                 <tr>
+                    <th>Shares</th>
                     <th>Ticker</th>
                     <th>Name</th>
-                    <th>Shares</th>
                     <!-- # Shares, $ amount, or % of portfolio -->
                     <th>Today's Return</th>
                     <th>Total Return</th>
@@ -14,21 +14,21 @@
             </thead>
             <tbody>
                 <tr>
-                    <td input class="form-control" ng-model='stock.ticker'></td>
+                    <td><input class="form-control" ng-model='stock.shares'></td>
+                    <td><input class="form-control" ng-model='stock.ticker'></td>
                     <td></td>
                     <td></td>
                     <td></td>
-                    <td></td>
-                    <td><button class="btn btn-primary" ng-click="addStock()"></button></td>
+                    <td><button class="btn btn-primary" ng-click="addStock()">Add Stock</button></td>
                 </tr>
                 <tr ng-repeat="stock in stock_list">
+                    <td>{{stock.shares}}</td>
                     <td>{{stock.ticker}}</td>
                     <td>{{stock.name}}</td>
-                    <td>{{stock.shares}}</td>
                     <td>{{stock.today_return}}</td>
                     <td>{{stock.total_return}}</td>
                 </tr>
             </tbody>
         </table>
     </container>
-</html>
+</div>
