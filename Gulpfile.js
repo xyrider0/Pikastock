@@ -39,20 +39,20 @@ gulp.task('browserify', ['views'], function() {
       //Pass desired output filename to vinyl-source-stream
       .pipe(source('main.js'))
       // Start piping stream to tasks!
-      .pipe(gulp.dest('src/main/build/'));
+      .pipe(gulp.dest('dist.dev/'));
 });
 
 gulp.task('html', function() {
   return gulp.src("src/main/index.html")
       .on('error', interceptErrors)
-      .pipe(gulp.dest('src/main/build/'));
+      .pipe(gulp.dest('dist.dev/'));
 });
 
 gulp.task('pack-css', function(){
   return gulp.src(['src/main/assets/css/index.css'])
         .on('error', interceptErrors)
         .pipe(concat('stylesheet.css'))
-        .pipe(gulp.dest('src/main/build/'))
+        .pipe(gulp.dest('dist.dev/'))
 })
 
 gulp.task('views', function() {
@@ -67,20 +67,32 @@ gulp.task('views', function() {
 
 // This task is used for building production ready
 // minified JS/CSS files into the dist/ folder
-gulp.task('build', ['html', 'browserify'], function() {
-  var html = gulp.src("src/main/build/index.html")
-                 .pipe(gulp.dest('dist/'));
+gulp.task('build', ['html', 'browserify', 'pack-images'], function() {
+  var html = gulp.src("dist.dev/index.html")
+                 .pipe(gulp.dest('dist.prod/'));
 
-  var js = gulp.src("src/main/build/main.js")
+  var js = gulp.src("dist.dev/main.js")
                .pipe(uglify())
-               .pipe(gulp.dest('dist/'));
+               .pipe(gulp.dest('dist.prod/'));
+  
+               // Need to minify this
+  var css = gulp.src("dist.dev/stylesheet.css")
+                .pipe(gulp.dest('dist.prod/'))
+  
+  var imgs = gulp.src("dist.dev/images/*")
+                .pipe(gulp.dest('dist.prod/images'))
 
-  return merge(html,js);
+  return merge(html,js,css,imgs);
+});
+
+gulp.task('pack-images', function() {
+  gulp.src('src/main/assets/img/*')
+      .pipe(gulp.dest('dist.dev/images'))
 });
 
 gulp.task('nodemon', function(cb){
   var callbackCalled = false;
-  return nodemon({script: './src/main/server.js'}).on('start', function(){
+  return nodemon({script: 'server.js'}).on('start', function(){
     if(!callbackCalled){
       callbackCalled = true;
       cb();
@@ -96,7 +108,7 @@ gulp.task('browser-sync', ['nodemon'], function(){
   gulp.watch([viewFiles, jsFiles, cssFiles]).on("change", browserSync.reload)
 })
 
-gulp.task('default', ['html', 'browserify', 'pack-css', 'browser-sync'], function() {
+gulp.task('default', ['html', 'browserify', 'pack-css', 'pack-images', 'browser-sync'], function() {
   gulp.watch("src/main/index.html", ['html']);
   gulp.watch(viewFiles, ['views']);
   gulp.watch(jsFiles, ['browserify']);

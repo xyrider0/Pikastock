@@ -3,7 +3,7 @@ const GhostContentAPI = require('@tryghost/content-api');
 
 var app = express();
 
-app.use(express.static(__dirname+'\\build'));
+app.use(express.static(__dirname+'\\dist.dev'));
 
 const api = new GhostContentAPI({
     url: 'https://pikastock.com',
