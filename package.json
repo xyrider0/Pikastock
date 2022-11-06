@@ -14,7 +14,7 @@
     "grunt-contrib-less": "latest",
     "grunt-contrib-uglify": "latest",
     "grunt-contrib-watch": "latest",
-    "gulp": "^3.9.1",
+    "gulp": "^4.0.2",
     "gulp-angular-templatecache": "^2.2.1",
     "gulp-concat": "^2.6.1",
     "gulp-jshint": "^2.1.0",
